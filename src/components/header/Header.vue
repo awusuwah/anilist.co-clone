@@ -34,10 +34,10 @@
 </template>
 
 <script>
-import { useUserStore } from "../../store/user.js";
+import { useUserStore } from "@/store/user.js";
 
-import Icon from "../icon/Icon.vue";
-import Tooltip from "../tooltip/Tooltip.vue";
+import Icon from "@/components/icon/Icon.vue";
+import Tooltip from "@/components/tooltip/Tooltip.vue";
 
 export default {
   name: "Header",
@@ -58,8 +58,9 @@ export default {
      */
     headerClasses() {
       return {
-        "h-16 bg-gray-900 select-none": true,
+        "absolute top-0 w-full h-16 bg-gray-900 z-20 opacity-70 select-none": true,
         "transition-all duration-500": true,
+        "hover:opacity-100": true,
       };
     },
 

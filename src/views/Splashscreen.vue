@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import { useUserStore } from "../store/user.js";
-import { userQuery } from "../queries/user.js";
+import { useUserStore } from "@/store/user.js";
+import { userQuery } from "@/queries/user.js";
 
 export default {
   name: "SplashscreenView",

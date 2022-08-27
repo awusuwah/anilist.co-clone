@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Layout from "../layouts/Default.vue";
-import Tooltip from "../components/tooltip/Tooltip.vue";
+import Layout from "@/layouts/Default.vue";
+import Tooltip from "@/components/tooltip/Tooltip.vue";
 
 export default {
   name: "HomeView",

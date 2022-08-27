@@ -6,12 +6,7 @@
     </span>
 
     <!-- Tooltip -->
-    <div
-      v-bind="$attrs"
-      v-show="isTooltipShown"
-      ref="tooltip"
-      :class="tooltipClasses"
-    >
+    <div v-bind="$attrs" v-show="isTooltipShown" ref="tooltip" :class="tooltipClasses">
       <slot></slot>
 
       <!-- Arrow -->
@@ -26,6 +21,14 @@ import { computePosition, arrow, flip, offset, shift } from "@floating-ui/dom";
 export default {
   name: "Tooltip",
   props: {
+    /**
+     * The offset of the tooltip.
+     */
+    offset: {
+      type: Number,
+      default: 8,
+    },
+
     /**
      * The placement where the tooltip should be shown relative to the activator.
      */
@@ -71,12 +74,7 @@ export default {
       // Compute the position for the tooltip
       computePosition(activatorRef, tooltipRef, {
         placement: this.placement,
-        middleware: [
-          offset(8),
-          shift({ padding: 20 }),
-          flip(),
-          arrow({ element: arrowRef }),
-        ],
+        middleware: [offset(this.offset), shift({ padding: 20 }), flip(), arrow({ element: arrowRef })],
       }).then(({ x, y, placement, middlewareData }) => {
         Object.assign(tooltipRef.style, {
           top: `${y}px`,

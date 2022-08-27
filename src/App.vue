@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Icons from "./components/icon/Icons.vue";
+import Icons from "@/components/icon/Icons.vue";
 
 export default {
   name: "App",
