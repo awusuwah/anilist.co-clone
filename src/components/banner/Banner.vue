@@ -1,11 +1,18 @@
 <template>
-  <section class="banner flex items-end" :style="`background-image: url(${bannerImage})`">
+  <section class="banner flex items-end" :style="`background-image: url(${user.bannerImage})`">
     <!-- Banner Shadow -->
     <div class="banner-shadow"></div>
 
     <!-- Banner Content -->
     <div class="container mx-auto flex flex-row z-10">
-      <img :src="avatar" class="h-40 rounded-t-md" />
+      <img :src="user.avatar" class="h-40 rounded-t-md" />
+      <h1 class="self-end m-6 text-xl text-gray-200 font-bold">{{ user.username }}</h1>
+
+      <div v-if="user.donatorBadge" class="flex flex-1 justify-end self-end">
+        <div class="mb-4 px-3 py-2 rounded-sm bg-purple-400 text-sm text-gray-200 font-semibold select-none">
+          {{ user.donatorBadge }}
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -17,17 +24,15 @@ export default {
   name: "Banner",
   computed: {
     /**
-     * The avatar image to display.
+     * The user whose data is displayed.
      */
-    avatar() {
-      return useUserStore().user?.avatar?.large;
-    },
-
-    /**
-     * The banner image to display.
-     */
-    bannerImage() {
-      return useUserStore().user?.bannerImage;
+    user() {
+      return {
+        avatar: useUserStore().user?.avatar?.large,
+        bannerImage: useUserStore().user?.bannerImage,
+        donatorBadge: useUserStore().user?.donatorBadge,
+        username: useUserStore().user?.name,
+      };
     },
   },
 };

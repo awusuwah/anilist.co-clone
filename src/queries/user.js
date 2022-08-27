@@ -14,6 +14,7 @@ export const userQuery = (username) => {
           large
         }
         bannerImage
+        donatorBadge
       }
     }
   `;
