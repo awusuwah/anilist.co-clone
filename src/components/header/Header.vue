@@ -5,8 +5,8 @@
       <img src="https://anilist.co/img/icons/icon.svg" class="h-12" />
 
       <!-- Main Navigation -->
-      <nav class="flex flex-1 justify-center gap-6">
-        <router-link to="/" :class="navigationItemClasses">Home</router-link>
+      <nav class="flex flex-1 justify-center gap-7">
+        <router-link to="/home" :class="navigationItemClasses">Home</router-link>
         <router-link to="/profile" :class="navigationItemClasses">Profile</router-link>
         <router-link to="/anime-list" :class="navigationItemClasses">Anime List</router-link>
         <router-link to="/manga-list" :class="navigationItemClasses">Manga List</router-link>
@@ -15,17 +15,44 @@
       </nav>
 
       <!-- Search & User Profile -->
-      <section>
-        <div class="flex flex-row items-center"></div>
+      <section class="flex flex-row items-center gap-6">
+        <Tooltip>
+          Search
+
+          <template #activator>
+            <Icon icon="search" class="w-4 h-4 cursor-pointer" />
+          </template>
+        </Tooltip>
+
+        <div class="flex flex-row items-center gap-2 cursor-pointer">
+          <img :src="avatar" class="h-10 rounded-sm" />
+          <Icon icon="chevron-down" class="w-3 h-3" />
+        </div>
       </section>
     </div>
   </header>
 </template>
 
 <script>
+import { useUserStore } from "../../store/user.js";
+
+import Icon from "../icon/Icon.vue";
+import Tooltip from "../tooltip/Tooltip.vue";
+
 export default {
   name: "Header",
+  components: {
+    Icon,
+    Tooltip,
+  },
   computed: {
+    /**
+     * The user's avatar image.
+     */
+    avatar() {
+      return useUserStore().user?.avatar?.medium;
+    },
+
     /**
      * The classes which are applied to the header.
      */
@@ -40,7 +67,10 @@ export default {
      * The classes which are applied to the navigation items.
      */
     navigationItemClasses() {
-      return {};
+      return {
+        "text-gray-300 text-sm font-semibold transition-all": true,
+        "hover:text-white": true,
+      };
     },
   },
 };
