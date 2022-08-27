@@ -2,22 +2,15 @@
   <main class="flex items-center justify-center w-screen h-screen">
     <section class="w-1/3 bg-gray-800 rounded-xl shadow-xl p-8 space-y-8">
       <div class="space-y-2">
-        <h1 class="text-2xl text-sky-200 font-semibold text-center">
-          Select your User
-        </h1>
+        <h1 class="text-2xl text-sky-200 font-semibold text-center">Select your User</h1>
         <p class="text-sm text-white font-semibold text-center">
-          Enter your username (or any for that matter) and browse through my
-          clone of Anilist.co. It's created with Vue 3 and TailwindCSS.
+          Enter your username (or any for that matter) and browse through my clone of Anilist.co. It's created with Vue
+          3 and TailwindCSS.
         </p>
       </div>
 
       <form class="flex" @submit.prevent="storeUser">
-        <input
-          v-model="username"
-          type="text"
-          placeholder="awusuwah"
-          :class="inputClasses"
-        />
+        <input v-model="username" type="text" placeholder="awusuwah" :class="inputClasses" />
         <button type="submit" :class="buttonClasses">Be a Weeb!</button>
       </form>
     </section>
@@ -26,6 +19,7 @@
 
 <script>
 import { useUserStore } from "../store/user.js";
+import { userQuery } from "../queries/user.js";
 
 export default {
   name: "SplashscreenView",
@@ -60,7 +54,21 @@ export default {
      * Store the user in the applications store. This is the user that will be used for all the
      * data fetching done in the application.
      */
-    storeUser() {
+    async storeUser() {
+      const response = await fetch("https://graphql.anilist.co", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: userQuery(this.username),
+        }),
+      });
+
+      const data = await response.json();
+
+      useUserStore().setUser(data.data.User);
       useUserStore().setUsername(this.username);
 
       // Redirect to the users profile page
