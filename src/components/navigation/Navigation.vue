@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-800 h-12">
+  <section class="bg-foreground h-12">
     <nav class="container mx-auto h-12 flex items-center justify-center gap-12">
       <router-link to="/profile" :class="navigationItemClasses">Overview</router-link>
       <router-link to="/anime-list" :class="navigationItemClasses">Anime List</router-link>

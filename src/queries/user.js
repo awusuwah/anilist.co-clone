@@ -15,6 +15,30 @@ export const userQuery = (username) => {
         }
         bannerImage
         donatorBadge
+        favourites {
+          anime {
+            nodes {
+              id
+              coverImage {
+                large
+              }
+              title {
+                userPreferred
+              }
+            }
+          }
+          characters {
+            nodes {
+              id
+              image {
+                large
+              }
+              name {
+                userPreferred
+              }
+            }
+          }
+        }
       }
     }
   `;

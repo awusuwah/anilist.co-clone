@@ -4,7 +4,9 @@
     <Banner />
     <Navigation />
 
-    <slot />
+    <main class="container mx-auto mt-6">
+      <slot />
+    </main>
   </div>
 </template>
 
