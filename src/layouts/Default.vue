@@ -1,15 +1,28 @@
 <template>
   <div>
+    <Header />
+    <Banner />
+    <Navigation />
+
     <slot />
   </div>
 </template>
 
 <script>
+import Banner from "@/components/banner/Banner.vue";
+import Header from "@/components/header/Header.vue";
+import Navigation from "@/components/navigation/Navigation.vue";
+
 import { useUserStore } from "@/store/user.js";
 import { userQuery } from "@/queries/user.js";
 
 export default {
   name: "DefaultLayout",
+  components: {
+    Banner,
+    Header,
+    Navigation,
+  },
   async beforeMount() {
     const USERNAME = "awusuwah";
     const userData = useUserStore().user;

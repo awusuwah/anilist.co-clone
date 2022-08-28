@@ -6,7 +6,7 @@
 import Layout from "@/layouts/Default.vue";
 
 export default {
-  name: "ProfileView",
+  name: "MangaListView",
   components: {
     Layout,
   },
