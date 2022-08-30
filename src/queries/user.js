@@ -39,6 +39,14 @@ export const userQuery = (username) => {
             }
           }
         }
+        statistics {
+          anime {
+            genres (limit: 6, sort: COUNT_DESC) {
+              genre
+              count
+            }
+          }
+        }
       }
     }
   `;

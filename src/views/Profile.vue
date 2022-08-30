@@ -2,6 +2,7 @@
   <Layout>
     <div class="grid-profile">
       <div class="space-y-6">
+        <GenreOverview />
         <Showcase title="Anime" :items="favoriteAnime" />
         <Showcase title="Characters" :items="favoriteCharacters" />
       </div>
@@ -12,6 +13,7 @@
 
 <script>
 import Layout from "@/layouts/Default.vue";
+import GenreOverview from "@/components/genreOverview/GenreOverview.vue";
 import Showcase from "@/components/showcase/Showcase.vue";
 
 import { useUserStore } from "@/store/user.js";
@@ -20,6 +22,7 @@ export default {
   name: "ProfileView",
   components: {
     Layout,
+    GenreOverview,
     Showcase,
   },
   computed: {

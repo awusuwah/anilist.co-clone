@@ -4,7 +4,7 @@
     <Banner />
     <Navigation />
 
-    <main class="container mx-auto mt-6">
+    <main class="container mx-auto my-6">
       <slot />
     </main>
   </div>
