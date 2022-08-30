@@ -5,6 +5,8 @@
     </h2>
 
     <div class="bg-foreground grid grid-cols-4 gap-4 p-4 rounded-md">
+      <slot />
+
       <div v-for="item in items" :key="item.id">
         <Tooltip>
           <span>{{ item.title }}</span>

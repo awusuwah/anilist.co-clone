@@ -2,6 +2,7 @@
   <Layout>
     <div class="grid-profile">
       <div class="space-y-6">
+        <ActivityHistory />
         <GenreOverview />
         <Showcase title="Anime" :items="favoriteAnime" />
         <Showcase title="Characters" :items="favoriteCharacters" />
@@ -13,6 +14,7 @@
 
 <script>
 import Layout from "@/layouts/Default.vue";
+import ActivityHistory from "@/components/activityHistory/ActivityHistory.vue";
 import GenreOverview from "@/components/genreOverview/GenreOverview.vue";
 import Showcase from "@/components/showcase/Showcase.vue";
 
@@ -22,6 +24,7 @@ export default {
   name: "ProfileView",
   components: {
     Layout,
+    ActivityHistory,
     GenreOverview,
     Showcase,
   },
@@ -31,7 +34,6 @@ export default {
      */
     favoriteAnime() {
       const anime = useUserStore().user?.favourites?.anime?.nodes || [];
-      console.log("Anime => ", anime);
 
       return anime.map((a) => {
         return {

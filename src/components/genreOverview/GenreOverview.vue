@@ -42,7 +42,7 @@ export default {
      * Prepare the users main genres for the showcase.
      */
     mainGenres() {
-      const genres = useUserStore().user?.statistics?.anime?.genres;
+      const genres = useUserStore().user?.statistics?.anime?.genres || [];
       const mainGenres = genres.slice(0, 4);
 
       return mainGenres.map((genre) => ({
@@ -57,7 +57,7 @@ export default {
      * Prepare the users sub genres for the showcase.
      */
     subGenres() {
-      const genres = useUserStore().user?.statistics?.anime?.genres;
+      const genres = useUserStore().user?.statistics?.anime?.genres || [];
 
       return genres.map((genre) => ({
         id: genre.genre.toLowerCase(),
